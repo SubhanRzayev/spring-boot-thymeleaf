@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <div class="container my-5">
+        <h1 class="mb-4">Employee List</h1>
+        <a class="btn btn-primary mb-3" th:href="@{/showNewEmployeeForm}" role="button">Create New Customer</a>
+
+        <table  class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Customer First Name</th>
+                    <th scope="col">Customer Last Name</th>
+                    <th scope="col">Customer Email</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user: ${listUsers}">
+                    <th th:text="${user.getId()}" />
+                    <td th:text="${user.getFirstname()}" />
+                    <td th:text="${user.getLastname()}" />
+                    <td th:text="${user.getEmail()}" />
+                    <td>
+                        <div class="mb-2 d-flex">
+                            <form th:action="@{/showFormForUpdate/{id}(id=${user.id})}" method="GET">
+                                <button type="submit" class="btn btn-warning mr-2">Update</button>
+                            </form>
+                            <form th:action="@{/deleteEmployee/{id}(id=${user.id})}" method="GET">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>

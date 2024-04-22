@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+</head>
+<body>
+        <div class="container mt-5">
+
+            <h2>Employee Form</h2>
+
+            <form action="#" th:action="@{/saveEmployee}" th:object="${user}" method="POST">
+                <div class="form-group ">
+                    <label for="name">FirsName:</label>
+                    <input type="text" class="form-control" id="name" th:field="*{firstname}" placeholder="Enter First Name">
+                </div>
+
+                <div class="form-group">
+
+                    <label for="lastname">Lastname:</label>
+                    <input type="text" class="form-control" id="lastname" th:field="*{lastname}" placeholder="Enter Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter Email">
+                    <small class="text-danger" th:if="${error}" th:text="${error}"></small>
+                </div>
+                <!-- Add more form fields as needed -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+        </div>
+</body>
+</html>
